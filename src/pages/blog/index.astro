@@ -1,0 +1,60 @@
+---
+import Base from '../../layouts/Base.astro';
+import { site, u } from '../../data/site';
+import { getPosts, formatDate } from '../../data/blog';
+import '../../styles/pages/blog-archive.css';
+
+const [featured, ...rest] = await getPosts();
+// Rows shown before "Load more", and how many each press adds.
+const BATCH = 5;
+---
+<Base
+  title="Blog"
+  description="Plain-language notes on bookkeeping, payroll and cash flow for construction owners on Vancouver Island."
+  active="blog"
+>
+<div class="ba-head">
+<div class="seg-in">
+<ul class="crumb">
+<li><a class="crumb-a" href={u('/')}>Home</a></li>
+<li class="crumb-sep">/</li>
+<li class="crumb-now">Blog</li>
+</ul>
+<h1 class="h1">Money talk for people who would rather be <span class="em">on a job site</span>.</h1>
+<p class="lead">Plain-language notes on bookkeeping, payroll and cash flow for construction owners on Vancouver Island. What Kevin would tell you on a call, without the jargon.</p>
+</div>
+</div>
+
+<section style="padding:var(--pad-minor) 0 var(--pad-major)">
+<div class="seg-in">
+{featured && (
+<a class="ba-feat" href={u(`/blog/${featured.id}/`)}>
+<div><span class="ba-k">Latest &middot; {featured.data.category}</span><h2 class:list={['h2', { ph: featured.data.sample }]}>{featured.data.title}</h2></div>
+<div><p class:list={{ ph: featured.data.sample }}>{featured.data.excerpt}</p><span class:list={['ba-meta', { ph: featured.data.sample }]}>{featured.data.author} &middot; {formatDate(featured.data.date)}</span><span class="btn btn-1 ba-btn">Read the post</span></div>
+</a>
+)}
+{rest.length > 0 && (
+<ul class="ba-list">
+{rest.map((post, i) => (
+<li hidden={i >= BATCH}><a class="ba-row" href={u(`/blog/${post.id}/`)}><span class="ba-k">{post.data.category}</span><div><h3 class:list={['h4', { ph: post.data.sample }]}>{post.data.title}</h3><p class:list={{ ph: post.data.sample }}>{post.data.excerpt}</p></div><span class="ba-side"><span class:list={['ba-meta', { ph: post.data.sample }]}>{formatDate(post.data.date)}</span><span class="ba-read">Read post &rarr;</span></span></a></li>
+))}
+</ul>
+)}
+{rest.length > BATCH && <div class="ba-more"><button class="btn btn-2" type="button" data-more={BATCH}>Load more posts</button></div>}
+</div>
+</section>
+
+<div class="cta on-dark ba-cta">
+<div class="cta-in">
+<div>
+<p class="eyebrow"><span class="mark"></span>Next step</p>
+<h2 class="h2 cta-h">Already thinking about your own numbers?</h2>
+<p class="cta-p">Skip the search bar. Tell Kevin what is on your plate and he will tell you what to do about it.</p>
+</div>
+<div class="cta-act">
+<a class="tel" href={site.tel}>{site.phone}</a>
+<a class="btn btn-1" href={u('/contact/')}>Book a call</a>
+</div>
+</div>
+</div>
+</Base>

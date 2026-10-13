@@ -1,0 +1,32 @@
+---
+import logoDark from '../assets/logo-dark.png';
+import { site, nav, u } from '../data/site';
+
+interface Props {
+  active?: string;
+  bookHref?: string;
+}
+
+const { active, bookHref = u('/contact/') } = Astro.props;
+---
+<header class="header">
+<div class="header-in">
+<a class="logo" href={u('/')}><img src={logoDark.src} alt="Parallel Accounting" width={logoDark.width} height={logoDark.height} style="display:block;height:48px;width:auto"></a>
+<ul class="nav">
+{nav.map((item) => <li><a class:list={['nav-a', { 'nav-on': item.key === active }]} href={u(item.href)} aria-current={item.key === active ? 'page' : undefined}>{item.label}</a></li>)}
+</ul>
+<div class="header-act">
+<a class="tel" href={site.tel}>{site.phone}</a>
+<a class="btn btn-1" href={bookHref}>Book a call</a>
+</div>
+<button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span class="burger-b"></span><span class="burger-b"></span><span class="burger-b"></span></button>
+</div>
+<nav class="menu" id="menu" aria-label="Menu" hidden>
+<div class="menu-in">
+<ul class="menu-l">
+{nav.map((item) => <li><a class:list={['menu-a', { 'nav-on': item.key === active }]} href={u(item.href)}>{item.label}</a></li>)}
+</ul>
+<a class="btn btn-1" href={bookHref}>Book a call</a>
+</div>
+</nav>
+</header>

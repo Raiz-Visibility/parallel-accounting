@@ -1,0 +1,83 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { site, u } from '../../data/site';
+import { getPosts, formatDate } from '../../data/blog';
+import '../../styles/pages/blog-post.css';
+import '../../styles/prose.css';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post) => {
+    // Related: same category first, then the newest of the rest.
+    const others = posts.filter((p) => p.id !== post.id);
+    const related = [...others.filter((p) => p.data.category === post.data.category), ...others.filter((p) => p.data.category !== post.data.category)].slice(0, 3);
+    return { params: { slug: post.id }, props: { post, related } };
+  });
+}
+
+const { post, related } = Astro.props;
+const { data } = post;
+const { Content } = await render(post);
+const cta = data.cta ?? {
+  heading: 'Already thinking about your own numbers?',
+  text: 'Tell Kevin what is on your plate and he will tell you what to do about it.',
+};
+---
+<Base title={data.title} description={data.excerpt} active="blog" ogType="article">
+<div class="pagehead">
+<div class="pagehead-in">
+<ul class="crumb">
+<li><a class="crumb-a" href={u('/')}>Home</a></li>
+<li class="crumb-sep">/</li>
+<li><a class="crumb-a" href={u('/blog/')}>Blog</a></li>
+<li class="crumb-sep">/</li>
+<li class="crumb-now">{data.title}</li>
+</ul>
+<p class="eyebrow"><span class="mark"></span>{data.category}</p>
+<h1 class="h1 hero-h" style="max-width:var(--measure)">{data.title}</h1>
+<p class="lead" style="margin-bottom:var(--space-6)">{data.excerpt}</p>
+<p class="small muted">By {data.author}, CPA, CMA &middot; Published <span class:list={{ ph: data.sample }}>{formatDate(data.date)}</span>{data.updated && <> &middot; Updated <span class:list={{ ph: data.sample }}>{formatDate(data.updated)}</span></>}{data.readTime && <> &middot; {data.readTime}</>}</p>
+</div>
+</div>
+<section style="padding:0 0 var(--pad-major)">
+<article class="seg-in art prose">
+<Content />
+</article>
+</section>
+<div class="seam">
+<div class="seg seg-dark on-dark">
+<div class="seg-in">
+<div class="cta-in">
+<div>
+<p class="eyebrow"><span class="mark"></span>Next step</p>
+<h2 class="h2 cta-h">{cta.heading}</h2>
+<p class="cta-p">{cta.text}</p>
+</div>
+<div class="cta-act">
+<a class="tel" href={site.tel}>{site.phone}</a>
+<a class="btn btn-1" href={u('/contact/')}>Book a call</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+{related.length > 0 && (
+<section style="padding:var(--pad-major) 0">
+<div class="seg-in rel">
+<p class="eyebrow"><span class="mark"></span>More reading</p>
+<h2 class="h2" style="margin-bottom:var(--space-7)">Related posts.</h2>
+<div class="grid">
+{related.map((p) => (
+<article class="post">
+<p class="eyebrow post-cat">{p.data.category}</p>
+<h3 class="h3 post-h"><a href={u(`/blog/${p.id}/`)}>{p.data.title}</a></h3>
+<p class="post-x">{p.data.excerpt}</p>
+<p class="post-meta">{p.data.author} &middot; <span class:list={{ ph: p.data.sample }}>{formatDate(p.data.date)}</span></p>
+</article>
+))}
+</div>
+</div>
+</section>
+)}
+</Base>

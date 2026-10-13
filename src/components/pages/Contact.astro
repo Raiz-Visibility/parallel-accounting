@@ -1,0 +1,79 @@
+---
+// Page body converted from the Claude Design handoff (contact-r2.html). Edit freely.
+import { site, u } from '../../data/site';
+---
+<div class="hero on-tan">
+<div class="hero-in">
+<p class="eyebrow"><span class="mark"></span>Get in touch</p>
+<h1 class="h1 hero-h">Call, and you will get <span class="em">Kevin</span>, not a call centre.</h1>
+<p class="lead hero-lead">Phone is fastest, and it rings straight through to him, not a receptionist or a queue. If it is outside office hours, the short form below holds the details so he can call you back first thing.</p>
+<div class="hero-act">
+<a class="tel-lg" href={site.tel}>{site.phone}</a>
+<a class="btn btn-2" href="#form-contact">Send a message</a>
+</div>
+<p class="small muted ph">{site.hours}</p>
+</div>
+</div>
+
+<section style="padding:var(--pad-major) 0">
+<div class="seg-in">
+<p class="eyebrow"><span class="mark"></span>Reach us directly</p>
+<div class="nap" id="find-us">
+<div class="nap-body">
+<h3 class="h3 nap-h">Find us</h3>
+<a class="tel-lg nap-tel" href={site.tel}>{site.phone}</a>
+<ul class="rows">
+<li class="row"><span class="row-k">Email</span><span class="row-v"><a href={site.mailto}>{site.email}</a></span></li>
+<li class="row"><span class="row-k">Address</span><span class="row-v ph">{site.address}</span></li>
+<li class="row"><span class="row-k">Hours</span><span class="row-v ph">{site.hours}</span></li>
+<li class="row"><span class="row-k">Area</span><span class="row-v">Victoria and Vancouver Island, delivered remotely.</span></li>
+</ul>
+<p class="btn-row" style="margin-top:var(--space-6)"><a class="btn-txt" href={site.directions} target="_blank" rel="noopener">Get directions</a></p>
+
+<form class="form" data-form method="post" action={site.formEndpoint || site.mailto} id="form-contact" style="margin-top:var(--space-8)">
+<h2 class="h4 card-h">Or send the details instead.</h2>
+<div class="form-row">
+<label class="field field-s"><span class="field-lab">Name</span><input class="field-in" name="name" required type="text"></label>
+<label class="field field-s"><span class="field-lab">Phone</span><input class="field-in" name="phone" type="tel"></label>
+</div>
+<label class="field field-w"><span class="field-lab">Email</span><input class="field-in" name="email" required type="email"></label>
+<label class="field field-w"><span class="field-lab">Message</span><textarea class="field-in field-ta" name="message" required></textarea></label>
+<button class="btn btn-1" type="submit">Send it over</button>
+<p class="form-note" data-form-note>Rather talk? The number above reaches Kevin directly.</p>
+</form>
+</div>
+<div class="nap-map has-map"><iframe src={site.mapEmbed} title="Map showing the Parallel Accounting office" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+</div>
+
+
+</div>
+</section>
+
+<section class="on-tan" style="padding:var(--pad-major) 0">
+<div class="seg-in git">
+<p class="eyebrow"><span class="mark"></span>Getting in touch</p>
+<h2 class="h2">Phone first. Everything else still works.</h2>
+<p class="p">Phone reaches Kevin directly and is the fastest way to get a straight answer. The form above is the next best thing &mdash; it holds the details until he calls you back, usually before the day is out. Email works too, at <a href={site.mailto}>{site.email}</a>.</p>
+<h3 class="h3" style="margin-top:var(--space-9);margin-bottom:var(--space-4)">Where we work</h3>
+<p class="p">Victoria and Vancouver Island, delivered remotely &mdash; island grown and raised, and you work anywhere in between.</p>
+<ul class="git-cards">
+<li><span class="git-n">01</span>Meetings happen by phone or video, whichever suits you better.</li>
+<li><span class="git-n">02</span>Paperwork moves online, so nothing needs to be driven downtown.</li>
+<li><span class="git-n">03</span>On the Island or off it, the process stays the same.</li>
+</ul>
+</div>
+</section>
+
+<div class="cta on-dark">
+<div class="cta-in">
+<div>
+<p class="eyebrow"><span class="mark"></span>Ready when you are</p>
+<h2 class="h2 cta-h">Most people just call.</h2>
+<p class="cta-p">Twenty minutes on the phone tells you more than any form ever will &mdash; but the form is right there if that is easier.</p>
+</div>
+<div class="cta-act">
+<a class="tel" href={site.tel}>{site.phone}</a>
+<a class="btn btn-1" href="#form-contact">Jump to the form</a>
+</div>
+</div>
+</div>
