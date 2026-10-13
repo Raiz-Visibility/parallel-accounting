@@ -20,8 +20,9 @@ export const services = [
   { slug: 'bookkeeping', name: 'Bookkeeping' },
   { slug: 'accounts-payable', name: 'Accounts payable' },
   { slug: 'accounts-receivable', name: 'Accounts receivable' },
-  { slug: 'financial-analysis', name: 'Financial analysis' },
-  { slug: 'controllership-cfo', name: 'Controllership and CFO' },
+  { slug: 'payroll', name: 'Payroll' },
+  { slug: 'controllership', name: 'Controllership' },
+  { slug: 'fractional-cfo', name: 'Fractional CFO' },
 ];
 
 export const nav = [
