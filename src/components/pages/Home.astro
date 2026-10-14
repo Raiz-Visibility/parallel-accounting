@@ -2,6 +2,8 @@
 // Page body converted from the Claude Design handoff (home-r3.html). Edit freely.
 import { site, u } from '../../data/site';
 import FormMeta from '../FormMeta.astro';
+import { Image } from 'astro:assets';
+import kevinDesk from '../../assets/kevin-loo-desk.jpg';
 ---
 <div class="hero on-dark">
 <div class="hero-in">
@@ -96,7 +98,7 @@ import FormMeta from '../FormMeta.astro';
 <p class="eyebrow"><span class="mark"></span>Why owners hire us</p>
 <h2 class="h2">Someone who answers three questions before you ask them.</h2>
 <figure class="figure figure-side why-panel">
-<div class="shot"><p class="shot-k">Shot 01 &middot; Why us</p><p class="shot-p">Kevin at a trailer table on a site, hard hat on the bench beside the laptop.</p></div>
+<Image class="shot-img" src={kevinDesk} alt="Kevin Loo smiling at a table with a laptop and a mug of coffee" widths={[480, 720, 1048]} sizes="(max-width: 640px) 100vw, 524px" />
 <div>
 <h3 class="h3" style="margin-bottom:var(--space-5)">Someone who has been on the other side of the invoice.</h3>
 <p class="p" style="margin-bottom:0">Kevin has worked as a subcontractor and alongside them, which is most of why the first call goes the way it does. He asks what your month looks like now, not what your systems are.</p>
