@@ -54,3 +54,5 @@ form[data-busy] button[type="submit"]{opacity:.6;pointer-events:none}
 
 /* photographs that fill a .shot field */
 .shot-img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:var(--radius)}
+.shot-img-square{aspect-ratio:1/1;object-position:50% 30%}
+.ab-card .shot-img{margin-bottom:var(--space-6)}

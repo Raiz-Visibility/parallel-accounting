@@ -1,6 +1,9 @@
 ---
 // Page body converted from the Claude Design handoff (about-r3.html). Edit freely.
 import { site, u } from '../../data/site';
+import { Image } from 'astro:assets';
+import kevinDesk from '../../assets/kevin-loo-desk.jpg';
+import kevinPortrait from '../../assets/kevin-loo-portrait.jpg';
 ---
 <div class="pagehead">
 <div class="pagehead-in">
@@ -18,7 +21,7 @@ import { site, u } from '../../data/site';
 <section style="padding:var(--pad-minor) 0 var(--pad-major)">
 <div class="seg-in">
 <figure class="figure figure-side panel-tan" style="margin:0 0 var(--pad-minor)">
-<div class="shot"><p class="shot-k">Shot 01 &middot; The story</p><p class="shot-p">Kevin at the bench in the garage, ledger open beside the vise.</p></div>
+<Image class="shot-img" src={kevinDesk} alt="Kevin Loo smiling at a table with a laptop and a mug of coffee" widths={[480, 720, 1048]} sizes="(max-width: 640px) 100vw, 524px" />
 <div>
 <p class="eyebrow"><span class="mark"></span>The story</p>
 <h2 class="h2" style="margin-bottom:var(--space-5)">Still the same trade, different tools.</h2>
@@ -53,7 +56,7 @@ import { site, u } from '../../data/site';
 <p class="p" style="margin-bottom:0">Parallel stays small on purpose, so Kevin stays the one you actually talk to. If that ever changes, it will be because the work asks for it, not because bigger looks better on a website.</p>
 </div>
 <div class="ab-card">
-<div class="shot shot-sm"><p class="shot-k">Shot 02 &middot; Team portrait</p><p class="shot-p">Kevin, laptop shut, out back with the dog before the day starts.</p></div>
+<Image class="shot-img shot-img-square" src={kevinPortrait} alt="Portrait of Kevin Loo, founder of Parallel Accounting" widths={[400, 600, 1000]} sizes="(max-width: 640px) 100vw, 571px" />
 <h3 class="h3 card-h">Kevin Loo</h3>
 <p class="small muted" style="margin-bottom:var(--space-4)">Founder &amp; CEO &middot; CPA, CMA</p>
 <p class="card-p" style="margin:0">Runs the firm end to end, from the first call to the reconciled close. Before the designations, he worked construction sites himself, most of why the first conversation tends to feel less like an interview and more like talking to someone who already gets it.</p>
