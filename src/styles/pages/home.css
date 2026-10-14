@@ -556,3 +556,12 @@ form[data-busy] button[type="submit"]{opacity:.6;pointer-events:none}
 .cities .city{flex:1}
 span.city{cursor:default}
 span.city:hover{border-color:transparent}
+
+/* Find us: the map gives up height so the region tiles sit level with the contact card */
+.ct-side{display:flex;flex-direction:column;gap:var(--space-4);min-width:0}
+:root .ct-side .has-map{flex:1 1 auto;min-height:240px}
+.regions{grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-3);margin:0}
+.regions .city{justify-content:center;text-align:center;padding:var(--space-4);font-size:var(--text-small);line-height:var(--lh-small)}
+@media (max-width:1100px){:root .regions{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){:root .regions{grid-template-columns:1fr 1fr}}
+@media (max-width:1100px){:root .ct-side .has-map{min-height:var(--map-h)}}
