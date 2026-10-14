@@ -1,6 +1,6 @@
 // Business details used across the site. Hours are still to be
 // confirmed by the client (they carry the `ph` flag in the markup).
-const address = '1815 Francisco Terrace, Victoria, BC V8N 4W2';
+const address = '6-1815 Francisco Terrace, Victoria, BC V8N 4W2';
 
 export const site = {
   name: 'Parallel Accounting',
