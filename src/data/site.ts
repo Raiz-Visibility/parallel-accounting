@@ -30,7 +30,7 @@ export const services = [
 export const nav = [
   { key: 'services', label: 'Services', href: '/services/' },
   { key: 'victoria', label: 'Victoria', href: '/locations/victoria/' },
-  { key: 'who', label: 'Who we work with', href: '/services/#industries' },
+  { key: 'who', label: 'Who we work with', href: '/#industries' },
   { key: 'about', label: 'About', href: '/about/' },
   { key: 'blog', label: 'Blog', href: '/blog/' },
   { key: 'contact', label: 'Contact', href: '/contact/' },

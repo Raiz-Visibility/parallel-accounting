@@ -542,3 +542,17 @@ form[data-busy] button[type="submit"]{opacity:.6;pointer-events:none}
 
 /* photographs that fill a .shot field */
 .shot-img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:var(--radius)}
+
+/* industry tiles (same treatment as the service-area tiles) */
+.cities{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--space-4);margin:var(--space-8) 0 var(--space-6);padding:0;list-style:none;text-align:left}
+.city{display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);background:var(--color-surface-alt);border-radius:var(--radius);padding:var(--space-5) var(--space-6);color:var(--color-primary);text-decoration:none;font-family:var(--font-display);font-weight:var(--w-head);font-size:var(--text-body);line-height:var(--lh-body);border:1px solid transparent}
+.city:hover{border-color:var(--color-primary)}
+.city-k{font-size:var(--text-eyebrow);letter-spacing:var(--ls-eyebrow);text-transform:uppercase;color:var(--color-accent)}
+.city-a{color:var(--color-accent)}
+@media (max-width:640px){:root .cities{grid-template-columns:1fr 1fr;gap:var(--space-3)}}
+@media (max-width:640px){:root .city{padding:var(--space-4)}}
+@media (min-width:641px) and (max-width:1100px){.cities{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.cities > li{display:flex}
+.cities .city{flex:1}
+span.city{cursor:default}
+span.city:hover{border-color:transparent}
