@@ -1,6 +1,7 @@
 ---
 // Page body converted from the Claude Design handoff (services-r3.html). Edit freely.
 import { site, u } from '../../data/site';
+import FormMeta from '../FormMeta.astro';
 ---
 <div class="hero on-tan hero-c">
 <div class="hero-in c-center">
@@ -245,7 +246,8 @@ import { site, u } from '../../data/site';
 </div>
 <div class="nap-map ct-map has-map"><iframe src={site.mapEmbed} title="Map showing the Parallel Accounting office" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
 </div>
-<form class="form ct-card" data-form method="post" action={site.formEndpoint || site.mailto} style="background:var(--color-surface-alt)">
+<form class="form ct-card" data-form method="post" action={site.formEndpoint} style="background:var(--color-surface-alt)">
+<FormMeta source="Services page" />
 <p class="eyebrow" style="margin-bottom:var(--space-4)"><span class="mark"></span>Send the short version</p>
 <div class="form-row">
 <label class="field field-s"><span class="field-lab">Name</span><input class="field-in" name="name" required type="text"></label>

@@ -12,8 +12,10 @@ export const site = {
   hours: 'Monday to Friday, 8:30am to 5:00pm PT',
   directions: `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(address)}`,
   mapEmbed: `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`,
-  // Formspree-style endpoint. Without it the forms fall back to opening an email.
-  formEndpoint: import.meta.env.PUBLIC_FORM_ENDPOINT || '',
+  // Enquiry forms post to Web3Forms. The access key is a public identifier (it is sent
+  // from the browser by design), not a secret; it decides which inbox gets the email.
+  formEndpoint: 'https://api.web3forms.com/submit',
+  formKey: import.meta.env.PUBLIC_WEB3FORMS_KEY || '64085823-354d-405e-8143-cb174f956dbc',
 };
 
 export const services = [

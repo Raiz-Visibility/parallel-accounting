@@ -1,6 +1,7 @@
 ---
 // Page body converted from the Claude Design handoff (home-r3.html). Edit freely.
 import { site, u } from '../../data/site';
+import FormMeta from '../FormMeta.astro';
 ---
 <div class="hero on-dark">
 <div class="hero-in">
@@ -15,7 +16,8 @@ import { site, u } from '../../data/site';
 </div>
 <p class="small muted ph">{site.hours}</p>
 </div>
-<form class="hero-form" data-form method="post" action={site.formEndpoint || site.mailto}>
+<form class="hero-form" data-form method="post" action={site.formEndpoint}>
+<FormMeta source="Home page" />
 <h2 class="h4 card-h">Tell us what is on your plate.</h2>
 <div class="form-row">
 <label class="field field-s"><span class="field-lab">Name</span><input class="field-in" name="name" required type="text"></label>

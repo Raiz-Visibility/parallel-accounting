@@ -1,6 +1,7 @@
 ---
 // Page body converted from the Claude Design handoff (contact-r2.html). Edit freely.
 import { site, u } from '../../data/site';
+import FormMeta from '../FormMeta.astro';
 ---
 <div class="hero on-tan">
 <div class="hero-in">
@@ -30,7 +31,8 @@ import { site, u } from '../../data/site';
 </ul>
 <p class="btn-row" style="margin-top:var(--space-6)"><a class="btn-txt" href={site.directions} target="_blank" rel="noopener">Get directions</a></p>
 
-<form class="form" data-form method="post" action={site.formEndpoint || site.mailto} id="form-contact" style="margin-top:var(--space-8)">
+<form class="form" data-form method="post" action={site.formEndpoint} id="form-contact" style="margin-top:var(--space-8)">
+<FormMeta source="Contact page" />
 <h2 class="h4 card-h">Or send the details instead.</h2>
 <div class="form-row">
 <label class="field field-s"><span class="field-lab">Name</span><input class="field-in" name="name" required type="text"></label>

@@ -1,0 +1,15 @@
+---
+// Hidden fields Web3Forms expects, shared by every enquiry form.
+import { site } from '../data/site';
+
+interface Props {
+  /** Which form this is, so the notification email says where the enquiry came from. */
+  source: string;
+}
+
+const { source } = Astro.props;
+---
+<input type="hidden" name="access_key" value={site.formKey}>
+<input type="hidden" name="subject" value={`Website enquiry (${source})`}>
+<input type="hidden" name="from_name" value="Parallel Accounting website">
+<input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">

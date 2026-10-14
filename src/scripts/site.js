@@ -29,25 +29,19 @@ document.querySelectorAll('.faq-q').forEach((q, i) => {
 });
 
 // ── forms ──
-// With PUBLIC_FORM_ENDPOINT set the form posts there; without it the action is a
-// mailto: link and the message opens in the visitor's mail app instead.
+// Enquiries post to Web3Forms and the result is shown in the note under the button.
 document.querySelectorAll('form[data-form]').forEach((form) => {
   const note = form.querySelector('[data-form-note]');
   const say = (text, state) => { if (note) { note.textContent = text; note.dataset.state = state; } };
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const data = new FormData(form);
-    const action = form.getAttribute('action') || '';
-    if (action.startsWith('mailto:')) {
-      const lines = [`Name: ${data.get('name') || ''}`, `Phone: ${data.get('phone') || ''}`, `Email: ${data.get('email') || ''}`, '', data.get('message') || ''];
-      window.location.href = `${action}?subject=${encodeURIComponent('Website enquiry')}&body=${encodeURIComponent(lines.join('\n'))}`;
-      say('Your mail app should open with the message ready to send.', 'ok');
-      return;
-    }
+    if ('busy' in form.dataset) return;
     form.dataset.busy = '';
+    say('Sending\u2026', 'busy');
     try {
-      const res = await fetch(action, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
-      if (!res.ok) throw new Error(String(res.status));
+      const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+      const result = await res.json().catch(() => ({}));
+      if (!res.ok || result.success === false) throw new Error(result.message || String(res.status));
       form.reset();
       say('Thanks. Kevin has your message and will be in touch.', 'ok');
     } catch {

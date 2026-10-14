@@ -32,8 +32,8 @@ jobs:
           # Origin and sub-path GitHub Pages will serve from (custom domain → base "/").
           SITE: ${{ steps.pages.outputs.origin }}
           BASE: ${{ steps.pages.outputs.base_path }}/
-          # Optional: a Formspree-style endpoint for the contact form (repo Settings → Variables).
-          PUBLIC_FORM_ENDPOINT: ${{ vars.PUBLIC_FORM_ENDPOINT }}
+          # Optional: overrides the Web3Forms access key in src/data/site.ts (repo Settings > Variables).
+          PUBLIC_WEB3FORMS_KEY: ${{ vars.PUBLIC_WEB3FORMS_KEY }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

@@ -53,9 +53,10 @@ in `npm run dev` only: address, hours, testimonials, sample post titles and date
 
 ## Contact forms
 
-Set `PUBLIC_FORM_ENDPOINT` (a Formspree-style URL) as a repository variable, or in `.env`
-locally, and the forms post to it. Without it they open the visitor's mail app with the
-message filled in.
+The four enquiry forms (home, services, Victoria, contact) post to Web3Forms. The access key
+is in `src/data/site.ts`; it decides which inbox receives the emails. To use a different
+key without editing code, set the `PUBLIC_WEB3FORMS_KEY` repository variable. Each email's
+subject says which page the enquiry came from.
 
 ## Re-converting the design
 
